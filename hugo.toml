@@ -1,0 +1,22 @@
+baseURL = "https://Emmmmmmmmmmmmmmmmm.github.io/"
+languageCode = "zh-cn"
+title = "我的运维手记"
+theme = "PaperMod"
+
+# 启用中文支持
+defaultContentLanguage = "zh-cn"
+
+# PaperMod 主题必需的模块挂载（Hugo v0.100+）
+[module]
+[[module.mounts]]
+source = "themes/PaperMod/assets"
+target = "assets"
+[[module.mounts]]
+source = "themes/PaperMod/i18n"
+target = "i18n"
+[[module.mounts]]
+source = "themes/PaperMod/archetypes"
+target = "archetypes"
+[[module.mounts]]
+source = "themes/PaperMod/layouts"
+target = "layouts"

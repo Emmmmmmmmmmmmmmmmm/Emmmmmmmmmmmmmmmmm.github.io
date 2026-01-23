@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on 我的运维手记</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on 我的运维手记</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 23 Jan 2026 22:35:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First Post</title>
+      <link>http://localhost:1313/posts/first-post/</link>
+      <pubDate>Fri, 23 Jan 2026 22:35:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/first-post/</guid>
+      <description>&lt;h2 id=&#34;欢迎来到我的运维博客&#34;&gt;欢迎来到我的运维博客！&lt;/h2&gt;
+&lt;p&gt;这是我的第一篇技术笔记。&lt;/p&gt;
+&lt;h3 id=&#34;今日任务&#34;&gt;今日任务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;安装 Hugo&lt;/li&gt;
+&lt;li&gt;配置 PaperMod 主题&lt;/li&gt;
+&lt;li&gt;部署到 GitHub Pages&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

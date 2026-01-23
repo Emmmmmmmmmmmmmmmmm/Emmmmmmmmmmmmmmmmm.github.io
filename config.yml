@@ -1,0 +1,5 @@
+baseURL: "https://Emmmmmmmmmmmmmmmmm.github.io/"
+title: "我的运维手记"
+theme: "PaperMod"          # ← 必须和文件夹名一致
+languageCode: "zh-cn"
+defaultContentLanguage: zh-cn
