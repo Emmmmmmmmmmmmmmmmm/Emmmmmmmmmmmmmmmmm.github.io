@@ -1,9 +1,7 @@
-baseURL = "https://Emmmmmmmmmmmmmmmmm.github.io/"
+baseURL = "https://emmmmmmmmmmmmmmmmm.github.io/"
 languageCode = "zh-cn"
-title = "我的运维手记"
+title = "我的运维学习笔记"
 theme = "PaperMod"
-
-# 启用中文支持
 defaultContentLanguage = "zh-cn"
 
 # PaperMod 主题必需的模块挂载（Hugo v0.100+）
@@ -20,3 +18,22 @@ target = "archetypes"
 [[module.mounts]]
 source = "themes/PaperMod/layouts"
 target = "layouts"
+
+# 配置 Hugo 内置代码高亮（Chroma）
+[markup]
+  [markup.highlight]
+    style = "github"      # GitHub 风格（浅色）
+    lineNos = false
+    codeFences = true
+    guessSyntax = true
+    anchorLineNos = false
+
+# PaperMod 主题参数
+[params]
+  disableHLJS = true      
+  homeInfoParams = { Title = "运维笔记", Content = "记录 Linux、Docker、自动化与云原生实践" }
+  socialIcons = [
+    { name = "github", url = "https://github.com/Emmmmmmmmmmmmmmmmm" }
+  ]
+[params.profileMode]
+  enabled = true
