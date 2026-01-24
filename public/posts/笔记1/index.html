@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>笔记1 | 我的运维学习笔记</title>
+<meta name="keywords" content="">
+<meta name="description" content="Linux常用命令&ndash;初级
+1.pwd	#查看当前目录路径 print working directory
+2.cd	#切换目录change directory
+	cd		    直接回到家目录
+	cd /root	回到家目录
+	cd ~		回到家目录
+	cd -		回到上一次所在目录
+	cd ..		表示上一级目录
+	cd .		表示当前目录
+3.ls	#显示文件 查看文件或者目录是否存在 list
+	-l	#显示详细信息
+		ls -l 显示文件或目录的详细信息
+		ll 相当有执行了ls -l 命令 ll是别名
+	ll -i 可以显示iNode号
+	-a	# 显示所有文件及目录包含隐藏的文件
+4.touch	#创建普通文件	如果文件存在则只修改文件的时间
+语法结构：
+		touch 普通文件				# 在当前位置创建普通文件
+		touch file file2 file3		# 一次性创建多个文件
+		touch /etc/test.txt		# 在指定的目录下创建test.txt
+5.mkdir	# 创建目录 -p 递归创建
+语法结构：
+		mkdir 目录名称		# 创建单个目录
+		mkdir dir1 dir2		# 创建多个目录
+		mkdir /opt/目录名称		# 在绝对路径下创建目录
+		# -p 递归创建
+6.tree	# 查看目录结构
+7.cat	# 查看文件的内容
+语法结构：
+		cat 文件
+		cat /目录/文件
+8.clear	# 清屏
+9.mount # 挂载光驱
+	mount /dev/cdrom /mnt	# 把光驱挂载到mnt目录
+10.umonut	# 卸载挂载点 加-f可以强制卸载
+	umount	/mnt
+11.cp	# 复制文件 copy
+语法结构：
+		cp 源文件 目标位置
+		cp 源文件 新文件名
+		cp file1 file2 目录/	# 复制多个文件到目录
+		cp 目录 目标位置
+		-r # 复制目录，递归拷贝
+12.mv	移动 move 
+语法结构：
+		mv 源文件 目标位置
+		mv file1 file2 目标文件
+		mv 源文件 新文件名
+##### 使用 mv 代替 rm
+13.rm	# 删除文件或目录 remove
+语法结构：
+		rm 文件
+		rm file1 file2
+		rm 目录
+		-f # 强制删除不提示，r 递归删除
+		
+14.echo	# 输出信息到屏幕或文件中 ，测试使用
+语法格式：
+		echo 字符串	# 输出到屏幕
+		echo &#39;sdfad&#39; &gt; test.txt	# 将输出信息写入文件
+		echo {1..100}	# 输出序列
+&gt; 和 &gt;&gt; 只接收正确的
+2&gt; 和 2&gt;&gt; 只接收错误的
+
+
+15.vim 快捷键
+视图模式：
+:set nu	# 显示行号
+G:	快速移动光标到末尾
+	10G  移动到第10行
+	1G	快速移动到第一行
+gg:	快速移动光标到第一行
+$:	快速到行尾   End
+0：	快速到行首  ^ Home
+
+/ 搜索内容
+	n 往下搜索
+	N 往上搜索
+	
+删除内容：
+dd	快速剪切光标所在的行
+3dd	快速剪切往下3行
+d&#43;End	快速删除光标所在到尾行
+d&#43;0 d&#43;Home d&#43;^ 快速删除光标所在行到行首
+d&#43;w	删除光标后的单个单词
+D	删除光标所在到行尾
+u	撤销操作
+d&#43;G	快速删除光标所在到文件末尾
+p	粘贴剪切复制的内容
+	3p	快速粘贴3行内容
+yy	复制
+
+进入编辑模式：i	a
+o	在光标下一行进入编辑模式
+O	在光标上一行进入编辑模式
+C	删除光标所在到行尾并进入编辑模式
+
+底行模式：
+:wq	保存并退出
+:q!	强制退出不保存
+:set nu	显示行号
+:set nonu	取消显示行号
+:set paste  粘贴外部代码时避免自动缩进错乱。
+
+视图模式下：ZZ 保存并退出
+
+替换：
+:s///	只替换光标所在行的第一个单纯
+:s///g	替换光标所在整行的单词
+:%s///g	替换文件中的所有单词
+
+ctrl&#43;v # 块模式，批量选中， 输入I （shift&#43;i）进入到编辑模式，数据内容，按2次esc
+shift&#43;v	# 批量选行
+16.hostnamectl set-hostname xxx		# 永久修改主机名
+	hostname xxx	# 临时修改主机名
+	cat /etc/hostname	# 查看主机名
+17. lscpu	# 查看cpu信息
+18. free -h	# 查看内存的信息
+19. df -h	# 查看磁盘信息
+20. uptime	# 查看系统负载
+21.	w	# 查看系统负载和用户登录信息
+22.	tail	# 默认显示文件末尾10行
+	-n数据	# 显示n行，简写可以用 tail -3 文件
+	-f	# 不退出，实时显示文件的变化
+	tailf  == tail -f 	# tailf不是别名是独立的命令
+	-F	# 了解 实时显示文件的变化，文件不存在也可以
+23.	hand	# 默认显示文件头10行   -n 参数
+24.	grep	# 过滤文件中的单词，模糊过滤
+25.	less	# 一页一页查看文件的内容，查看大文件比较好用 --- 空格或f向下翻页
+26.	more 了解
+27.	wc	# wc -l  统计行数，或者统计输出到屏幕的行数 || cat file|wc -l
+28.	sort	# 排序，默认按照第一列进行正序排序
+	sort -r	# 逆序排序
+	sort -n	# 按数字正序排序
+	sort -nr	# 按数字的逆序排序
+	sort -nk2	# 对第二列进行数字正序排序 &#43;r 逆序（-nrk2）
+29. uniq	# 去重（把挨着的相同内容进行去重）
+	uniq -c # 去重统计
+30. du -sh	# 查看文件大小
+31.	stat	# 查看文件详细信息，包含文件时间
+
+	find   # 查找文件
+        1.find ./ -name &#34;&#34;	# 按名称查找
+        2.find ./ -iname &#34;&#34;	# 不区分大小写
+        3.find ./ -inum &#34;&#34;	# 按iNode号码查找
+        4.find ./ -type f/d/c.	# 按文件类型查找
+        5.find ./ -type f -name &#34;&#34;	# 联合查询默认并且 同时成立
+        6.find ./ -maxdepth 1 -type f # 按照深度等级查找
+        7.find ./ -size 10M -10M &#43;10M	# 按照文件大小查找
+        8.find ./ -size 10M -size &#43;15M	# 并且的意思，需要符合所给的条件
+        9.find ./ -size 10M or -name &#34;1.txt&#34; # 查找文件名为1.txt 或者是10M的文件
+        10.find ./ -mtime &#43;7 -7	# 按照文件修改时间查找
+     find将结果交给其他命令 xargs、exec、``
+     	find ./ -name &#34;1.txt&#34; | xargs rm -r	# 删除目录需要加-r
+     	find ./ -name &#34;1.txt&#34; | xargs ls -l	# 查看详细信息
+     	find ./ -name &#34;1.txt&#34; | xargs -i cp {} /opt/	# 复制
+     	
+     	find ./ -name &#34;1.txt&#34; -exec rm {} \;
+     	find ./ -name &#34;1.txt&#34; -exec ls -l {} \;
+     	find ./ -name &#34;1.txt&#34; -exec cp {} /opt \;
+     	
+     	rm -rf `find ./ -name &#34;1.txt&#34;`
+     	ll `find ./ -name &#34;1.txt&#34;`
+     	cp `find ./ -name &#34;1.txt&#34;` /opt/
+三个特殊符号：$$ || ;
+	
+    tar	# 解压缩文件 tar zcvf all.tar.gz 文件1 文件2 文件3 （尽量进入相对路径打包）
+    	z：使用zip压缩
+    	c：create 创建
+    	v：verbose显示压缩过程，可以省略此参数
+    	f：file文件
+    	xf：解压缩 # 默认解压到当前目录
+    	-C：指定解压的目录	# tar xf xxx.tar.gz -C /tmp/
+    	tf：查看压缩包里的文件
+    	扩展：
+    		--exclude=1.txt	# 排除文件
+    		--exclude-from=file	# 排除file中多个文件
+    zip	压缩
+    	1.zip all.zip *.txt	# 打包
+    	2.unzip all.zip	# 解压到当前目录
+    	3.unzip all.zip -d /tmp	# 指定解压的位置
+    	
+ 	
+    
+     	
+     	
+Linux 的配置文件
+1.	/etc/sysconfig/network-scripts/ifcfg-eth0	# 网卡配置文件
+2.	/etc/hosts	# 本地DNS域名解析服务
+3.	/etc/hostname	# 主机名称的配置文件  里面存放的主机名 、、、hostnamectl set-hostname zhujiming (临时加永久生效)
+4.	/etc/resolv.conf	# 作用：存放DN配置文件的，DNS配置文件， 配置后生效
+5.	/etc/fstab		# 作用：开机自动挂载
+	UUID=04aaab6c-3fcf-4dac-8265-034fe807452e /                       xfs     defaults        0 0
+	第一列：设备的名称 可以是UUID 可以使用设备的名称
+	第二列：挂载点，设备的入口，类似通过/mnt进入cdrom
+	第三列：文件系统类型
+	第四列：default挂载参数，默认即可
+	第五列：0 不自检 开机是否自检 1自检
+	第六列：0 不备份 开机是否备份 1备份
+6. /etc/rc.local	# 作用：开机自动执行文件中的命令 -- 需要有执行权限 ——chmod &#43;x /etc/rc.local
+7. /etc/inittab		# 文件（了解） 运行级别    
+	0	# 关机	
+	1	# 单用户模式，忘记密码可以进入1级别	
+	2	# 表示多用户，但是不支持NFS，网络文件系统（缺少很多功能）
+	3	# 表示完全多用户 我们默认所在的界面
+	4	# 保留待开发
+	5 	# 表示桌面运行级别  需要提前安装DESKTOP包
+	6	# 表示重启
+8. /etc/motd	# 开机显示文件内容
+9. /var/log/mesages	# 系统日志文件
+10.	/var/log/secure	# 系统登录和退出日志
+
+	
+	
+Linux快捷键
+1.ctrl&#43;c	# 终止进程
+2.ctrl&#43;l	# 清屏
+3.ctrl&#43;a	# 快速移动光标到行首  Home
+4.catrl&#43;e	# 快速移动光标到行尾	 End
+5.catrl&#43;方向键	# 移动一个单词
+6.catrl&#43;u	# 剪切光标到行首
+7.catrl&#43;y	# 粘贴
+">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/%E7%AC%94%E8%AE%B01/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh-cn" href="http://localhost:1313/posts/%E7%AC%94%E8%AE%B01/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="我的运维学习笔记 (Alt + H)">我的运维学习笔记</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      笔记1
+    </h1>
+    <div class="post-meta"><span title='2026-01-24 13:19:23 +0800 CST'>January 24, 2026</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="linux常用命令初级">Linux常用命令&ndash;初级<a hidden class="anchor" aria-hidden="true" href="#linux常用命令初级">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1.pwd	<span style="color:#57606a">#查看当前目录路径 print working directory</span>
+</span></span><span style="display:flex;"><span>2.cd	<span style="color:#57606a">#切换目录change directory</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#6639ba">cd</span>		    直接回到家目录
+</span></span><span style="display:flex;"><span>	<span style="color:#6639ba">cd</span> /root	回到家目录
+</span></span><span style="display:flex;"><span>	<span style="color:#6639ba">cd</span> ~		回到家目录
+</span></span><span style="display:flex;"><span>	<span style="color:#6639ba">cd</span> -		回到上一次所在目录
+</span></span><span style="display:flex;"><span>	<span style="color:#6639ba">cd</span> ..		表示上一级目录
+</span></span><span style="display:flex;"><span>	<span style="color:#6639ba">cd</span> .		表示当前目录
+</span></span><span style="display:flex;"><span>3.ls	<span style="color:#57606a">#显示文件 查看文件或者目录是否存在 list</span>
+</span></span><span style="display:flex;"><span>	-l	<span style="color:#57606a">#显示详细信息</span>
+</span></span><span style="display:flex;"><span>		ls -l 显示文件或目录的详细信息
+</span></span><span style="display:flex;"><span>		ll 相当有执行了ls -l 命令 ll是别名
+</span></span><span style="display:flex;"><span>	ll -i 可以显示iNode号
+</span></span><span style="display:flex;"><span>	-a	<span style="color:#57606a"># 显示所有文件及目录包含隐藏的文件</span>
+</span></span><span style="display:flex;"><span>4.touch	<span style="color:#57606a">#创建普通文件	如果文件存在则只修改文件的时间</span>
+</span></span><span style="display:flex;"><span>语法结构：
+</span></span><span style="display:flex;"><span>		touch 普通文件				<span style="color:#57606a"># 在当前位置创建普通文件</span>
+</span></span><span style="display:flex;"><span>		touch file file2 file3		<span style="color:#57606a"># 一次性创建多个文件</span>
+</span></span><span style="display:flex;"><span>		touch /etc/test.txt		<span style="color:#57606a"># 在指定的目录下创建test.txt</span>
+</span></span><span style="display:flex;"><span>5.mkdir	<span style="color:#57606a"># 创建目录 -p 递归创建</span>
+</span></span><span style="display:flex;"><span>语法结构：
+</span></span><span style="display:flex;"><span>		mkdir 目录名称		<span style="color:#57606a"># 创建单个目录</span>
+</span></span><span style="display:flex;"><span>		mkdir dir1 dir2		<span style="color:#57606a"># 创建多个目录</span>
+</span></span><span style="display:flex;"><span>		mkdir /opt/目录名称		<span style="color:#57606a"># 在绝对路径下创建目录</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#57606a"># -p 递归创建</span>
+</span></span><span style="display:flex;"><span>6.tree	<span style="color:#57606a"># 查看目录结构</span>
+</span></span><span style="display:flex;"><span>7.cat	<span style="color:#57606a"># 查看文件的内容</span>
+</span></span><span style="display:flex;"><span>语法结构：
+</span></span><span style="display:flex;"><span>		cat 文件
+</span></span><span style="display:flex;"><span>		cat /目录/文件
+</span></span><span style="display:flex;"><span>8.clear	<span style="color:#57606a"># 清屏</span>
+</span></span><span style="display:flex;"><span>9.mount <span style="color:#57606a"># 挂载光驱</span>
+</span></span><span style="display:flex;"><span>	mount /dev/cdrom /mnt	<span style="color:#57606a"># 把光驱挂载到mnt目录</span>
+</span></span><span style="display:flex;"><span>10.umonut	<span style="color:#57606a"># 卸载挂载点 加-f可以强制卸载</span>
+</span></span><span style="display:flex;"><span>	umount	/mnt
+</span></span><span style="display:flex;"><span>11.cp	<span style="color:#57606a"># 复制文件 copy</span>
+</span></span><span style="display:flex;"><span>语法结构：
+</span></span><span style="display:flex;"><span>		cp 源文件 目标位置
+</span></span><span style="display:flex;"><span>		cp 源文件 新文件名
+</span></span><span style="display:flex;"><span>		cp file1 file2 目录/	<span style="color:#57606a"># 复制多个文件到目录</span>
+</span></span><span style="display:flex;"><span>		cp 目录 目标位置
+</span></span><span style="display:flex;"><span>		-r <span style="color:#57606a"># 复制目录，递归拷贝</span>
+</span></span><span style="display:flex;"><span>12.mv	移动 move 
+</span></span><span style="display:flex;"><span>语法结构：
+</span></span><span style="display:flex;"><span>		mv 源文件 目标位置
+</span></span><span style="display:flex;"><span>		mv file1 file2 目标文件
+</span></span><span style="display:flex;"><span>		mv 源文件 新文件名
+</span></span><span style="display:flex;"><span><span style="color:#57606a">##### 使用 mv 代替 rm</span>
+</span></span><span style="display:flex;"><span>13.rm	<span style="color:#57606a"># 删除文件或目录 remove</span>
+</span></span><span style="display:flex;"><span>语法结构：
+</span></span><span style="display:flex;"><span>		rm 文件
+</span></span><span style="display:flex;"><span>		rm file1 file2
+</span></span><span style="display:flex;"><span>		rm 目录
+</span></span><span style="display:flex;"><span>		-f <span style="color:#57606a"># 强制删除不提示，r 递归删除</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>14.echo	<span style="color:#57606a"># 输出信息到屏幕或文件中 ，测试使用</span>
+</span></span><span style="display:flex;"><span>语法格式：
+</span></span><span style="display:flex;"><span>		<span style="color:#6639ba">echo</span> 字符串	<span style="color:#57606a"># 输出到屏幕</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#6639ba">echo</span> <span style="color:#0a3069">&#39;sdfad&#39;</span> &gt; test.txt	<span style="color:#57606a"># 将输出信息写入文件</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#6639ba">echo</span> <span style="color:#0550ae">{</span>1..100<span style="color:#0550ae">}</span>	<span style="color:#57606a"># 输出序列</span>
+</span></span><span style="display:flex;"><span>&gt; 和 &gt;&gt; 只接收正确的
+</span></span><span style="display:flex;"><span>2&gt; 和 2&gt;&gt; 只接收错误的
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>15.vim 快捷键
+</span></span><span style="display:flex;"><span>视图模式：
+</span></span><span style="display:flex;"><span>:set nu	<span style="color:#57606a"># 显示行号</span>
+</span></span><span style="display:flex;"><span>G:	快速移动光标到末尾
+</span></span><span style="display:flex;"><span>	10G  移动到第10行
+</span></span><span style="display:flex;"><span>	1G	快速移动到第一行
+</span></span><span style="display:flex;"><span>gg:	快速移动光标到第一行
+</span></span><span style="display:flex;"><span>$:	快速到行尾   End
+</span></span><span style="display:flex;"><span>0：	快速到行首  ^ Home
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/ 搜索内容
+</span></span><span style="display:flex;"><span>	n 往下搜索
+</span></span><span style="display:flex;"><span>	N 往上搜索
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>删除内容：
+</span></span><span style="display:flex;"><span>dd	快速剪切光标所在的行
+</span></span><span style="display:flex;"><span>3dd	快速剪切往下3行
+</span></span><span style="display:flex;"><span>d+End	快速删除光标所在到尾行
+</span></span><span style="display:flex;"><span>d+0 d+Home d+^ 快速删除光标所在行到行首
+</span></span><span style="display:flex;"><span>d+w	删除光标后的单个单词
+</span></span><span style="display:flex;"><span>D	删除光标所在到行尾
+</span></span><span style="display:flex;"><span>u	撤销操作
+</span></span><span style="display:flex;"><span>d+G	快速删除光标所在到文件末尾
+</span></span><span style="display:flex;"><span>p	粘贴剪切复制的内容
+</span></span><span style="display:flex;"><span>	3p	快速粘贴3行内容
+</span></span><span style="display:flex;"><span>yy	复制
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>进入编辑模式：i	a
+</span></span><span style="display:flex;"><span>o	在光标下一行进入编辑模式
+</span></span><span style="display:flex;"><span>O	在光标上一行进入编辑模式
+</span></span><span style="display:flex;"><span>C	删除光标所在到行尾并进入编辑模式
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>底行模式：
+</span></span><span style="display:flex;"><span>:wq	保存并退出
+</span></span><span style="display:flex;"><span>:q!	强制退出不保存
+</span></span><span style="display:flex;"><span>:set nu	显示行号
+</span></span><span style="display:flex;"><span>:set nonu	取消显示行号
+</span></span><span style="display:flex;"><span>:set paste  粘贴外部代码时避免自动缩进错乱。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>视图模式下：ZZ 保存并退出
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>替换：
+</span></span><span style="display:flex;"><span>:s///	只替换光标所在行的第一个单纯
+</span></span><span style="display:flex;"><span>:s///g	替换光标所在整行的单词
+</span></span><span style="display:flex;"><span>:%s///g	替换文件中的所有单词
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ctrl+v <span style="color:#57606a"># 块模式，批量选中， 输入I （shift+i）进入到编辑模式，数据内容，按2次esc</span>
+</span></span><span style="display:flex;"><span>shift+v	<span style="color:#57606a"># 批量选行</span>
+</span></span><span style="display:flex;"><span>16.hostnamectl set-hostname xxx		<span style="color:#57606a"># 永久修改主机名</span>
+</span></span><span style="display:flex;"><span>	hostname xxx	<span style="color:#57606a"># 临时修改主机名</span>
+</span></span><span style="display:flex;"><span>	cat /etc/hostname	<span style="color:#57606a"># 查看主机名</span>
+</span></span><span style="display:flex;"><span>17. lscpu	<span style="color:#57606a"># 查看cpu信息</span>
+</span></span><span style="display:flex;"><span>18. free -h	<span style="color:#57606a"># 查看内存的信息</span>
+</span></span><span style="display:flex;"><span>19. df -h	<span style="color:#57606a"># 查看磁盘信息</span>
+</span></span><span style="display:flex;"><span>20. uptime	<span style="color:#57606a"># 查看系统负载</span>
+</span></span><span style="display:flex;"><span>21.	w	<span style="color:#57606a"># 查看系统负载和用户登录信息</span>
+</span></span><span style="display:flex;"><span>22.	tail	<span style="color:#57606a"># 默认显示文件末尾10行</span>
+</span></span><span style="display:flex;"><span>	-n数据	<span style="color:#57606a"># 显示n行，简写可以用 tail -3 文件</span>
+</span></span><span style="display:flex;"><span>	-f	<span style="color:#57606a"># 不退出，实时显示文件的变化</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#953800">tailf</span>  <span style="color:#0550ae">==</span> tail -f 	<span style="color:#57606a"># tailf不是别名是独立的命令</span>
+</span></span><span style="display:flex;"><span>	-F	<span style="color:#57606a"># 了解 实时显示文件的变化，文件不存在也可以</span>
+</span></span><span style="display:flex;"><span>23.	hand	<span style="color:#57606a"># 默认显示文件头10行   -n 参数</span>
+</span></span><span style="display:flex;"><span>24.	grep	<span style="color:#57606a"># 过滤文件中的单词，模糊过滤</span>
+</span></span><span style="display:flex;"><span>25.	less	<span style="color:#57606a"># 一页一页查看文件的内容，查看大文件比较好用 --- 空格或f向下翻页</span>
+</span></span><span style="display:flex;"><span>26.	more 了解
+</span></span><span style="display:flex;"><span>27.	wc	<span style="color:#57606a"># wc -l  统计行数，或者统计输出到屏幕的行数 || cat file|wc -l</span>
+</span></span><span style="display:flex;"><span>28.	sort	<span style="color:#57606a"># 排序，默认按照第一列进行正序排序</span>
+</span></span><span style="display:flex;"><span>	sort -r	<span style="color:#57606a"># 逆序排序</span>
+</span></span><span style="display:flex;"><span>	sort -n	<span style="color:#57606a"># 按数字正序排序</span>
+</span></span><span style="display:flex;"><span>	sort -nr	<span style="color:#57606a"># 按数字的逆序排序</span>
+</span></span><span style="display:flex;"><span>	sort -nk2	<span style="color:#57606a"># 对第二列进行数字正序排序 +r 逆序（-nrk2）</span>
+</span></span><span style="display:flex;"><span>29. uniq	<span style="color:#57606a"># 去重（把挨着的相同内容进行去重）</span>
+</span></span><span style="display:flex;"><span>	uniq -c <span style="color:#57606a"># 去重统计</span>
+</span></span><span style="display:flex;"><span>30. du -sh	<span style="color:#57606a"># 查看文件大小</span>
+</span></span><span style="display:flex;"><span>31.	stat	<span style="color:#57606a"># 查看文件详细信息，包含文件时间</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	find   <span style="color:#57606a"># 查找文件</span>
+</span></span><span style="display:flex;"><span>        1.find ./ -name <span style="color:#0a3069">&#34;&#34;</span>	<span style="color:#57606a"># 按名称查找</span>
+</span></span><span style="display:flex;"><span>        2.find ./ -iname <span style="color:#0a3069">&#34;&#34;</span>	<span style="color:#57606a"># 不区分大小写</span>
+</span></span><span style="display:flex;"><span>        3.find ./ -inum <span style="color:#0a3069">&#34;&#34;</span>	<span style="color:#57606a"># 按iNode号码查找</span>
+</span></span><span style="display:flex;"><span>        4.find ./ -type f/d/c.	<span style="color:#57606a"># 按文件类型查找</span>
+</span></span><span style="display:flex;"><span>        5.find ./ -type f -name <span style="color:#0a3069">&#34;&#34;</span>	<span style="color:#57606a"># 联合查询默认并且 同时成立</span>
+</span></span><span style="display:flex;"><span>        6.find ./ -maxdepth <span style="color:#0550ae">1</span> -type f <span style="color:#57606a"># 按照深度等级查找</span>
+</span></span><span style="display:flex;"><span>        7.find ./ -size 10M -10M +10M	<span style="color:#57606a"># 按照文件大小查找</span>
+</span></span><span style="display:flex;"><span>        8.find ./ -size 10M -size +15M	<span style="color:#57606a"># 并且的意思，需要符合所给的条件</span>
+</span></span><span style="display:flex;"><span>        9.find ./ -size 10M or -name <span style="color:#0a3069">&#34;1.txt&#34;</span> <span style="color:#57606a"># 查找文件名为1.txt 或者是10M的文件</span>
+</span></span><span style="display:flex;"><span>        10.find ./ -mtime +7 -7	<span style="color:#57606a"># 按照文件修改时间查找</span>
+</span></span><span style="display:flex;"><span>     find将结果交给其他命令 xargs、exec、<span style="color:#0a3069">``</span>
+</span></span><span style="display:flex;"><span>     	find ./ -name <span style="color:#0a3069">&#34;1.txt&#34;</span> <span style="color:#1f2328">|</span> xargs rm -r	<span style="color:#57606a"># 删除目录需要加-r</span>
+</span></span><span style="display:flex;"><span>     	find ./ -name <span style="color:#0a3069">&#34;1.txt&#34;</span> <span style="color:#1f2328">|</span> xargs ls -l	<span style="color:#57606a"># 查看详细信息</span>
+</span></span><span style="display:flex;"><span>     	find ./ -name <span style="color:#0a3069">&#34;1.txt&#34;</span> <span style="color:#1f2328">|</span> xargs -i cp <span style="color:#0550ae">{}</span> /opt/	<span style="color:#57606a"># 复制</span>
+</span></span><span style="display:flex;"><span>     	
+</span></span><span style="display:flex;"><span>     	find ./ -name <span style="color:#0a3069">&#34;1.txt&#34;</span> -exec rm <span style="color:#0550ae">{}</span> <span style="color:#0a3069">\;</span>
+</span></span><span style="display:flex;"><span>     	find ./ -name <span style="color:#0a3069">&#34;1.txt&#34;</span> -exec ls -l <span style="color:#0550ae">{}</span> <span style="color:#0a3069">\;</span>
+</span></span><span style="display:flex;"><span>     	find ./ -name <span style="color:#0a3069">&#34;1.txt&#34;</span> -exec cp <span style="color:#0550ae">{}</span> /opt <span style="color:#0a3069">\;</span>
+</span></span><span style="display:flex;"><span>     	
+</span></span><span style="display:flex;"><span>     	rm -rf <span style="color:#0a3069">`</span>find ./ -name <span style="color:#0a3069">&#34;1.txt&#34;</span><span style="color:#0a3069">`</span>
+</span></span><span style="display:flex;"><span>     	ll <span style="color:#0a3069">`</span>find ./ -name <span style="color:#0a3069">&#34;1.txt&#34;</span><span style="color:#0a3069">`</span>
+</span></span><span style="display:flex;"><span>     	cp <span style="color:#0a3069">`</span>find ./ -name <span style="color:#0a3069">&#34;1.txt&#34;</span><span style="color:#0a3069">`</span> /opt/
+</span></span><span style="display:flex;"><span>三个特殊符号：<span style="color:#953800">$$</span> <span style="color:#0550ae">||</span> <span style="color:#1f2328">;</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>    tar	<span style="color:#57606a"># 解压缩文件 tar zcvf all.tar.gz 文件1 文件2 文件3 （尽量进入相对路径打包）</span>
+</span></span><span style="display:flex;"><span>    	z：使用zip压缩
+</span></span><span style="display:flex;"><span>    	c：create 创建
+</span></span><span style="display:flex;"><span>    	v：verbose显示压缩过程，可以省略此参数
+</span></span><span style="display:flex;"><span>    	f：file文件
+</span></span><span style="display:flex;"><span>    	xf：解压缩 <span style="color:#57606a"># 默认解压到当前目录</span>
+</span></span><span style="display:flex;"><span>    	-C：指定解压的目录	<span style="color:#57606a"># tar xf xxx.tar.gz -C /tmp/</span>
+</span></span><span style="display:flex;"><span>    	tf：查看压缩包里的文件
+</span></span><span style="display:flex;"><span>    	扩展：
+</span></span><span style="display:flex;"><span>    		--exclude<span style="color:#0550ae">=</span>1.txt	<span style="color:#57606a"># 排除文件</span>
+</span></span><span style="display:flex;"><span>    		--exclude-from<span style="color:#0550ae">=</span>file	<span style="color:#57606a"># 排除file中多个文件</span>
+</span></span><span style="display:flex;"><span>    zip	压缩
+</span></span><span style="display:flex;"><span>    	1.zip all.zip *.txt	<span style="color:#57606a"># 打包</span>
+</span></span><span style="display:flex;"><span>    	2.unzip all.zip	<span style="color:#57606a"># 解压到当前目录</span>
+</span></span><span style="display:flex;"><span>    	3.unzip all.zip -d /tmp	<span style="color:#57606a"># 指定解压的位置</span>
+</span></span><span style="display:flex;"><span>    	
+</span></span><span style="display:flex;"><span> 	
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>     	
+</span></span><span style="display:flex;"><span>     	
+</span></span></code></pre></div><h1 id="linux-的配置文件">Linux 的配置文件<a hidden class="anchor" aria-hidden="true" href="#linux-的配置文件">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1.	/etc/sysconfig/network-scripts/ifcfg-eth0	<span style="color:#57606a"># 网卡配置文件</span>
+</span></span><span style="display:flex;"><span>2.	/etc/hosts	<span style="color:#57606a"># 本地DNS域名解析服务</span>
+</span></span><span style="display:flex;"><span>3.	/etc/hostname	<span style="color:#57606a"># 主机名称的配置文件  里面存放的主机名 、、、hostnamectl set-hostname zhujiming (临时加永久生效)</span>
+</span></span><span style="display:flex;"><span>4.	/etc/resolv.conf	<span style="color:#57606a"># 作用：存放DN配置文件的，DNS配置文件， 配置后生效</span>
+</span></span><span style="display:flex;"><span>5.	/etc/fstab		<span style="color:#57606a"># 作用：开机自动挂载</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#953800">UUID</span><span style="color:#0550ae">=</span>04aaab6c-3fcf-4dac-8265-034fe807452e /                       xfs     defaults        <span style="color:#0550ae">0</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span>	第一列：设备的名称 可以是UUID 可以使用设备的名称
+</span></span><span style="display:flex;"><span>	第二列：挂载点，设备的入口，类似通过/mnt进入cdrom
+</span></span><span style="display:flex;"><span>	第三列：文件系统类型
+</span></span><span style="display:flex;"><span>	第四列：default挂载参数，默认即可
+</span></span><span style="display:flex;"><span>	第五列：0 不自检 开机是否自检 1自检
+</span></span><span style="display:flex;"><span>	第六列：0 不备份 开机是否备份 1备份
+</span></span><span style="display:flex;"><span>6. /etc/rc.local	<span style="color:#57606a"># 作用：开机自动执行文件中的命令 -- 需要有执行权限 ——chmod +x /etc/rc.local</span>
+</span></span><span style="display:flex;"><span>7. /etc/inittab		<span style="color:#57606a"># 文件（了解） 运行级别    </span>
+</span></span><span style="display:flex;"><span>	0	<span style="color:#57606a"># 关机	</span>
+</span></span><span style="display:flex;"><span>	1	<span style="color:#57606a"># 单用户模式，忘记密码可以进入1级别	</span>
+</span></span><span style="display:flex;"><span>	2	<span style="color:#57606a"># 表示多用户，但是不支持NFS，网络文件系统（缺少很多功能）</span>
+</span></span><span style="display:flex;"><span>	3	<span style="color:#57606a"># 表示完全多用户 我们默认所在的界面</span>
+</span></span><span style="display:flex;"><span>	4	<span style="color:#57606a"># 保留待开发</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#0550ae">5</span> 	<span style="color:#57606a"># 表示桌面运行级别  需要提前安装DESKTOP包</span>
+</span></span><span style="display:flex;"><span>	6	<span style="color:#57606a"># 表示重启</span>
+</span></span><span style="display:flex;"><span>8. /etc/motd	<span style="color:#57606a"># 开机显示文件内容</span>
+</span></span><span style="display:flex;"><span>9. /var/log/mesages	<span style="color:#57606a"># 系统日志文件</span>
+</span></span><span style="display:flex;"><span>10.	/var/log/secure	<span style="color:#57606a"># 系统登录和退出日志</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	
+</span></span></code></pre></div><h1 id="linux快捷键">Linux快捷键<a hidden class="anchor" aria-hidden="true" href="#linux快捷键">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1.ctrl+c	<span style="color:#57606a"># 终止进程</span>
+</span></span><span style="display:flex;"><span>2.ctrl+l	<span style="color:#57606a"># 清屏</span>
+</span></span><span style="display:flex;"><span>3.ctrl+a	<span style="color:#57606a"># 快速移动光标到行首  Home</span>
+</span></span><span style="display:flex;"><span>4.catrl+e	<span style="color:#57606a"># 快速移动光标到行尾	 End</span>
+</span></span><span style="display:flex;"><span>5.catrl+方向键	<span style="color:#57606a"># 移动一个单词</span>
+</span></span><span style="display:flex;"><span>6.catrl+u	<span style="color:#57606a"># 剪切光标到行首</span>
+</span></span><span style="display:flex;"><span>7.catrl+y	<span style="color:#57606a"># 粘贴</span>
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">我的运维学习笔记</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

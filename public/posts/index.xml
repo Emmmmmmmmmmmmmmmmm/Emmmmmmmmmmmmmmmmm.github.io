@@ -1,13 +1,256 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on 我的运维手记</title>
+    <title>Posts on 我的运维学习笔记</title>
     <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on 我的运维手记</description>
+    <description>Recent content in Posts on 我的运维学习笔记</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 23 Jan 2026 22:35:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 24 Jan 2026 13:19:23 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>笔记1</title>
+      <link>http://localhost:1313/posts/%E7%AC%94%E8%AE%B01/</link>
+      <pubDate>Sat, 24 Jan 2026 13:19:23 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E7%AC%94%E8%AE%B01/</guid>
+      <description>&lt;h1 id=&#34;linux常用命令初级&#34;&gt;Linux常用命令&amp;ndash;初级&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1.pwd	&lt;span style=&#34;color:#57606a&#34;&gt;#查看当前目录路径 print working directory&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2.cd	&lt;span style=&#34;color:#57606a&#34;&gt;#切换目录change directory&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#6639ba&#34;&gt;cd&lt;/span&gt;		    直接回到家目录
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#6639ba&#34;&gt;cd&lt;/span&gt; /root	回到家目录
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#6639ba&#34;&gt;cd&lt;/span&gt; ~		回到家目录
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#6639ba&#34;&gt;cd&lt;/span&gt; -		回到上一次所在目录
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#6639ba&#34;&gt;cd&lt;/span&gt; ..		表示上一级目录
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#6639ba&#34;&gt;cd&lt;/span&gt; .		表示当前目录
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3.ls	&lt;span style=&#34;color:#57606a&#34;&gt;#显示文件 查看文件或者目录是否存在 list&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	-l	&lt;span style=&#34;color:#57606a&#34;&gt;#显示详细信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		ls -l 显示文件或目录的详细信息
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		ll 相当有执行了ls -l 命令 ll是别名
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	ll -i 可以显示iNode号
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	-a	&lt;span style=&#34;color:#57606a&#34;&gt;# 显示所有文件及目录包含隐藏的文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;4.touch	&lt;span style=&#34;color:#57606a&#34;&gt;#创建普通文件	如果文件存在则只修改文件的时间&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;语法结构：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		touch 普通文件				&lt;span style=&#34;color:#57606a&#34;&gt;# 在当前位置创建普通文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		touch file file2 file3		&lt;span style=&#34;color:#57606a&#34;&gt;# 一次性创建多个文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		touch /etc/test.txt		&lt;span style=&#34;color:#57606a&#34;&gt;# 在指定的目录下创建test.txt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;5.mkdir	&lt;span style=&#34;color:#57606a&#34;&gt;# 创建目录 -p 递归创建&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;语法结构：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		mkdir 目录名称		&lt;span style=&#34;color:#57606a&#34;&gt;# 创建单个目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		mkdir dir1 dir2		&lt;span style=&#34;color:#57606a&#34;&gt;# 创建多个目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		mkdir /opt/目录名称		&lt;span style=&#34;color:#57606a&#34;&gt;# 在绝对路径下创建目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#57606a&#34;&gt;# -p 递归创建&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6.tree	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看目录结构&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7.cat	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看文件的内容&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;语法结构：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		cat 文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		cat /目录/文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;8.clear	&lt;span style=&#34;color:#57606a&#34;&gt;# 清屏&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;9.mount &lt;span style=&#34;color:#57606a&#34;&gt;# 挂载光驱&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	mount /dev/cdrom /mnt	&lt;span style=&#34;color:#57606a&#34;&gt;# 把光驱挂载到mnt目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;10.umonut	&lt;span style=&#34;color:#57606a&#34;&gt;# 卸载挂载点 加-f可以强制卸载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	umount	/mnt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;11.cp	&lt;span style=&#34;color:#57606a&#34;&gt;# 复制文件 copy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;语法结构：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		cp 源文件 目标位置
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		cp 源文件 新文件名
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		cp file1 file2 目录/	&lt;span style=&#34;color:#57606a&#34;&gt;# 复制多个文件到目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		cp 目录 目标位置
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		-r &lt;span style=&#34;color:#57606a&#34;&gt;# 复制目录，递归拷贝&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;12.mv	移动 move 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;语法结构：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		mv 源文件 目标位置
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		mv file1 file2 目标文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		mv 源文件 新文件名
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#57606a&#34;&gt;##### 使用 mv 代替 rm&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;13.rm	&lt;span style=&#34;color:#57606a&#34;&gt;# 删除文件或目录 remove&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;语法结构：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		rm 文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		rm file1 file2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		rm 目录
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		-f &lt;span style=&#34;color:#57606a&#34;&gt;# 强制删除不提示，r 递归删除&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;14.echo	&lt;span style=&#34;color:#57606a&#34;&gt;# 输出信息到屏幕或文件中 ，测试使用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;语法格式：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#6639ba&#34;&gt;echo&lt;/span&gt; 字符串	&lt;span style=&#34;color:#57606a&#34;&gt;# 输出到屏幕&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#6639ba&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#39;sdfad&amp;#39;&lt;/span&gt; &amp;gt; test.txt	&lt;span style=&#34;color:#57606a&#34;&gt;# 将输出信息写入文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#6639ba&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#0550ae&#34;&gt;{&lt;/span&gt;1..100&lt;span style=&#34;color:#0550ae&#34;&gt;}&lt;/span&gt;	&lt;span style=&#34;color:#57606a&#34;&gt;# 输出序列&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; 和 &amp;gt;&amp;gt; 只接收正确的
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2&amp;gt; 和 2&amp;gt;&amp;gt; 只接收错误的
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;15.vim 快捷键
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;视图模式：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:set nu	&lt;span style=&#34;color:#57606a&#34;&gt;# 显示行号&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;G:	快速移动光标到末尾
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	10G  移动到第10行
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	1G	快速移动到第一行
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gg:	快速移动光标到第一行
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$:	快速到行尾   End
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0：	快速到行首  ^ Home
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/ 搜索内容
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	n 往下搜索
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	N 往上搜索
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;删除内容：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dd	快速剪切光标所在的行
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3dd	快速剪切往下3行
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d+End	快速删除光标所在到尾行
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d+0 d+Home d+^ 快速删除光标所在行到行首
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d+w	删除光标后的单个单词
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;D	删除光标所在到行尾
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;u	撤销操作
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d+G	快速删除光标所在到文件末尾
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;p	粘贴剪切复制的内容
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	3p	快速粘贴3行内容
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yy	复制
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;进入编辑模式：i	a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;o	在光标下一行进入编辑模式
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;O	在光标上一行进入编辑模式
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;C	删除光标所在到行尾并进入编辑模式
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;底行模式：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:wq	保存并退出
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:q!	强制退出不保存
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:set nu	显示行号
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:set nonu	取消显示行号
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:set paste  粘贴外部代码时避免自动缩进错乱。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;视图模式下：ZZ 保存并退出
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;替换：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:s///	只替换光标所在行的第一个单纯
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:s///g	替换光标所在整行的单词
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:%s///g	替换文件中的所有单词
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ctrl+v &lt;span style=&#34;color:#57606a&#34;&gt;# 块模式，批量选中， 输入I （shift+i）进入到编辑模式，数据内容，按2次esc&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;shift+v	&lt;span style=&#34;color:#57606a&#34;&gt;# 批量选行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;16.hostnamectl set-hostname xxx		&lt;span style=&#34;color:#57606a&#34;&gt;# 永久修改主机名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	hostname xxx	&lt;span style=&#34;color:#57606a&#34;&gt;# 临时修改主机名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	cat /etc/hostname	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看主机名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;17. lscpu	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看cpu信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;18. free -h	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看内存的信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;19. df -h	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看磁盘信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;20. uptime	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看系统负载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;21.	w	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看系统负载和用户登录信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;22.	tail	&lt;span style=&#34;color:#57606a&#34;&gt;# 默认显示文件末尾10行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	-n数据	&lt;span style=&#34;color:#57606a&#34;&gt;# 显示n行，简写可以用 tail -3 文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	-f	&lt;span style=&#34;color:#57606a&#34;&gt;# 不退出，实时显示文件的变化&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#953800&#34;&gt;tailf&lt;/span&gt;  &lt;span style=&#34;color:#0550ae&#34;&gt;==&lt;/span&gt; tail -f 	&lt;span style=&#34;color:#57606a&#34;&gt;# tailf不是别名是独立的命令&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	-F	&lt;span style=&#34;color:#57606a&#34;&gt;# 了解 实时显示文件的变化，文件不存在也可以&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;23.	hand	&lt;span style=&#34;color:#57606a&#34;&gt;# 默认显示文件头10行   -n 参数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;24.	grep	&lt;span style=&#34;color:#57606a&#34;&gt;# 过滤文件中的单词，模糊过滤&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;25.	less	&lt;span style=&#34;color:#57606a&#34;&gt;# 一页一页查看文件的内容，查看大文件比较好用 --- 空格或f向下翻页&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;26.	more 了解
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;27.	wc	&lt;span style=&#34;color:#57606a&#34;&gt;# wc -l  统计行数，或者统计输出到屏幕的行数 || cat file|wc -l&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;28.	sort	&lt;span style=&#34;color:#57606a&#34;&gt;# 排序，默认按照第一列进行正序排序&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	sort -r	&lt;span style=&#34;color:#57606a&#34;&gt;# 逆序排序&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	sort -n	&lt;span style=&#34;color:#57606a&#34;&gt;# 按数字正序排序&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	sort -nr	&lt;span style=&#34;color:#57606a&#34;&gt;# 按数字的逆序排序&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	sort -nk2	&lt;span style=&#34;color:#57606a&#34;&gt;# 对第二列进行数字正序排序 +r 逆序（-nrk2）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;29. uniq	&lt;span style=&#34;color:#57606a&#34;&gt;# 去重（把挨着的相同内容进行去重）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	uniq -c &lt;span style=&#34;color:#57606a&#34;&gt;# 去重统计&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;30. du -sh	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看文件大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;31.	stat	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看文件详细信息，包含文件时间&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	find   &lt;span style=&#34;color:#57606a&#34;&gt;# 查找文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        1.find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;	&lt;span style=&#34;color:#57606a&#34;&gt;# 按名称查找&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        2.find ./ -iname &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;	&lt;span style=&#34;color:#57606a&#34;&gt;# 不区分大小写&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        3.find ./ -inum &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;	&lt;span style=&#34;color:#57606a&#34;&gt;# 按iNode号码查找&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        4.find ./ -type f/d/c.	&lt;span style=&#34;color:#57606a&#34;&gt;# 按文件类型查找&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        5.find ./ -type f -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;	&lt;span style=&#34;color:#57606a&#34;&gt;# 联合查询默认并且 同时成立&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        6.find ./ -maxdepth &lt;span style=&#34;color:#0550ae&#34;&gt;1&lt;/span&gt; -type f &lt;span style=&#34;color:#57606a&#34;&gt;# 按照深度等级查找&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        7.find ./ -size 10M -10M +10M	&lt;span style=&#34;color:#57606a&#34;&gt;# 按照文件大小查找&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        8.find ./ -size 10M -size +15M	&lt;span style=&#34;color:#57606a&#34;&gt;# 并且的意思，需要符合所给的条件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        9.find ./ -size 10M or -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#57606a&#34;&gt;# 查找文件名为1.txt 或者是10M的文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        10.find ./ -mtime +7 -7	&lt;span style=&#34;color:#57606a&#34;&gt;# 按照文件修改时间查找&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     find将结果交给其他命令 xargs、exec、&lt;span style=&#34;color:#0a3069&#34;&gt;``&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#1f2328&#34;&gt;|&lt;/span&gt; xargs rm -r	&lt;span style=&#34;color:#57606a&#34;&gt;# 删除目录需要加-r&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#1f2328&#34;&gt;|&lt;/span&gt; xargs ls -l	&lt;span style=&#34;color:#57606a&#34;&gt;# 查看详细信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#1f2328&#34;&gt;|&lt;/span&gt; xargs -i cp &lt;span style=&#34;color:#0550ae&#34;&gt;{}&lt;/span&gt; /opt/	&lt;span style=&#34;color:#57606a&#34;&gt;# 复制&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt; -exec rm &lt;span style=&#34;color:#0550ae&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#0a3069&#34;&gt;\;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt; -exec ls -l &lt;span style=&#34;color:#0550ae&#34;&gt;{}&lt;/span&gt; &lt;span style=&#34;color:#0a3069&#34;&gt;\;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt; -exec cp &lt;span style=&#34;color:#0550ae&#34;&gt;{}&lt;/span&gt; /opt &lt;span style=&#34;color:#0a3069&#34;&gt;\;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	rm -rf &lt;span style=&#34;color:#0a3069&#34;&gt;`&lt;/span&gt;find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#0a3069&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	ll &lt;span style=&#34;color:#0a3069&#34;&gt;`&lt;/span&gt;find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#0a3069&#34;&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	cp &lt;span style=&#34;color:#0a3069&#34;&gt;`&lt;/span&gt;find ./ -name &lt;span style=&#34;color:#0a3069&#34;&gt;&amp;#34;1.txt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#0a3069&#34;&gt;`&lt;/span&gt; /opt/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;三个特殊符号：&lt;span style=&#34;color:#953800&#34;&gt;$$&lt;/span&gt; &lt;span style=&#34;color:#0550ae&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#1f2328&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    tar	&lt;span style=&#34;color:#57606a&#34;&gt;# 解压缩文件 tar zcvf all.tar.gz 文件1 文件2 文件3 （尽量进入相对路径打包）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	z：使用zip压缩
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	c：create 创建
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	v：verbose显示压缩过程，可以省略此参数
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	f：file文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	xf：解压缩 &lt;span style=&#34;color:#57606a&#34;&gt;# 默认解压到当前目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	-C：指定解压的目录	&lt;span style=&#34;color:#57606a&#34;&gt;# tar xf xxx.tar.gz -C /tmp/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	tf：查看压缩包里的文件
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	扩展：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    		--exclude&lt;span style=&#34;color:#0550ae&#34;&gt;=&lt;/span&gt;1.txt	&lt;span style=&#34;color:#57606a&#34;&gt;# 排除文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    		--exclude-from&lt;span style=&#34;color:#0550ae&#34;&gt;=&lt;/span&gt;file	&lt;span style=&#34;color:#57606a&#34;&gt;# 排除file中多个文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    zip	压缩
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	1.zip all.zip *.txt	&lt;span style=&#34;color:#57606a&#34;&gt;# 打包&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	2.unzip all.zip	&lt;span style=&#34;color:#57606a&#34;&gt;# 解压到当前目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	3.unzip all.zip -d /tmp	&lt;span style=&#34;color:#57606a&#34;&gt;# 指定解压的位置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; 	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     	
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;linux-的配置文件&#34;&gt;Linux 的配置文件&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1.	/etc/sysconfig/network-scripts/ifcfg-eth0	&lt;span style=&#34;color:#57606a&#34;&gt;# 网卡配置文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2.	/etc/hosts	&lt;span style=&#34;color:#57606a&#34;&gt;# 本地DNS域名解析服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3.	/etc/hostname	&lt;span style=&#34;color:#57606a&#34;&gt;# 主机名称的配置文件  里面存放的主机名 、、、hostnamectl set-hostname zhujiming (临时加永久生效)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;4.	/etc/resolv.conf	&lt;span style=&#34;color:#57606a&#34;&gt;# 作用：存放DN配置文件的，DNS配置文件， 配置后生效&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;5.	/etc/fstab		&lt;span style=&#34;color:#57606a&#34;&gt;# 作用：开机自动挂载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#953800&#34;&gt;UUID&lt;/span&gt;&lt;span style=&#34;color:#0550ae&#34;&gt;=&lt;/span&gt;04aaab6c-3fcf-4dac-8265-034fe807452e /                       xfs     defaults        &lt;span style=&#34;color:#0550ae&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#0550ae&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	第一列：设备的名称 可以是UUID 可以使用设备的名称
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	第二列：挂载点，设备的入口，类似通过/mnt进入cdrom
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	第三列：文件系统类型
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	第四列：default挂载参数，默认即可
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	第五列：0 不自检 开机是否自检 1自检
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	第六列：0 不备份 开机是否备份 1备份
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6. /etc/rc.local	&lt;span style=&#34;color:#57606a&#34;&gt;# 作用：开机自动执行文件中的命令 -- 需要有执行权限 ——chmod +x /etc/rc.local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7. /etc/inittab		&lt;span style=&#34;color:#57606a&#34;&gt;# 文件（了解） 运行级别    &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	0	&lt;span style=&#34;color:#57606a&#34;&gt;# 关机	&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	1	&lt;span style=&#34;color:#57606a&#34;&gt;# 单用户模式，忘记密码可以进入1级别	&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	2	&lt;span style=&#34;color:#57606a&#34;&gt;# 表示多用户，但是不支持NFS，网络文件系统（缺少很多功能）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	3	&lt;span style=&#34;color:#57606a&#34;&gt;# 表示完全多用户 我们默认所在的界面&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	4	&lt;span style=&#34;color:#57606a&#34;&gt;# 保留待开发&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#0550ae&#34;&gt;5&lt;/span&gt; 	&lt;span style=&#34;color:#57606a&#34;&gt;# 表示桌面运行级别  需要提前安装DESKTOP包&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	6	&lt;span style=&#34;color:#57606a&#34;&gt;# 表示重启&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;8. /etc/motd	&lt;span style=&#34;color:#57606a&#34;&gt;# 开机显示文件内容&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;9. /var/log/mesages	&lt;span style=&#34;color:#57606a&#34;&gt;# 系统日志文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;10.	/var/log/secure	&lt;span style=&#34;color:#57606a&#34;&gt;# 系统登录和退出日志&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;linux快捷键&#34;&gt;Linux快捷键&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1.ctrl+c	&lt;span style=&#34;color:#57606a&#34;&gt;# 终止进程&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2.ctrl+l	&lt;span style=&#34;color:#57606a&#34;&gt;# 清屏&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3.ctrl+a	&lt;span style=&#34;color:#57606a&#34;&gt;# 快速移动光标到行首  Home&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;4.catrl+e	&lt;span style=&#34;color:#57606a&#34;&gt;# 快速移动光标到行尾	 End&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;5.catrl+方向键	&lt;span style=&#34;color:#57606a&#34;&gt;# 移动一个单词&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6.catrl+u	&lt;span style=&#34;color:#57606a&#34;&gt;# 剪切光标到行首&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7.catrl+y	&lt;span style=&#34;color:#57606a&#34;&gt;# 粘贴&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>First Post</title>
+      <link>http://localhost:1313/posts/ansible%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/</link>
+      <pubDate>Fri, 23 Jan 2026 22:35:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/ansible%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/</guid>
+      <description>&lt;h2 id=&#34;欢迎来到我的运维博客&#34;&gt;欢迎来到我的运维博客！&lt;/h2&gt;
+&lt;p&gt;这是我的第一篇技术笔记。&lt;/p&gt;
+&lt;h3 id=&#34;今日任务&#34;&gt;今日任务&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;安装 Hugo&lt;/li&gt;
+&lt;li&gt;配置 PaperMod 主题&lt;/li&gt;
+&lt;li&gt;部署到 GitHub Pages&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>First Post</title>
       <link>http://localhost:1313/posts/first-post/</link>

@@ -36,4 +36,4 @@ target = "layouts"
     { name = "github", url = "https://github.com/Emmmmmmmmmmmmmmmmm" }
   ]
 [params.profileMode]
-  enabled = true
+  enabled = false
